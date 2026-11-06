@@ -67,6 +67,7 @@ export class Input {
     } else if (!this.pointers.has(e.pointerId)) {
       this.mouse.inside = false; // over a HUD panel
     }
+    this.handlers.onPointerMove?.(p, e);
     if (!this.pointers.has(e.pointerId)) return;
     this.pointers.set(e.pointerId, p);
 
@@ -99,7 +100,7 @@ export class Input {
     if (!this.pointers.has(e.pointerId)) return;
     const d = this.drag;
     if (d && d.id === e.pointerId) {
-      if (!d.moved) this.handlers.onClick?.(d.sx, d.sy, d.button);
+      if (!d.moved) this.handlers.onClick?.(d.sx, d.sy, d.button, e);
       else if (performance.now() - d.lt > 80) this.camera.vx = this.camera.vy = 0; // paused before release
     }
     this.pointers.delete(e.pointerId);
