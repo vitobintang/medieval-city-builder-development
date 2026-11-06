@@ -14,6 +14,8 @@ import {
 import {
   BERRY_BUSH_ROWS, bushLegend, STONE_A_ROWS, STONE_B_ROWS, stoneLegend, STUMP_ROWS, stumpLegend,
 } from "./sprites/propSprites.js";
+import { BUILDING_ART, makeBuildingSprite, drawScaffold } from "./sprites/buildingSprites.js";
+import { buildFolkAtlas, buildCargoAtlas } from "./sprites/folkSprites.js";
 
 /** Sway levels baked per tree. Index 2 is "perfectly still". */
 export const SWAY_LEVELS = [-2, -1, 0, 1, 2];
@@ -62,5 +64,19 @@ export function buildRasterAtlas() {
     [Obj.STUMP]: propSet(STUMP_ROWS, stumpLegend, "stump"),
   };
 
-  return { grass, dirt, sand, water, decals, objects };
+  // --- buildings: one entry per building type (see world/tiles.js Building)
+  const buildings = {};
+  for (const id of Object.keys(BUILDING_ART)) buildings[id] = makeBuildingSprite(+id);
+
+  // --- scaffolding, one per footprint size
+  const scaffolds = {};
+  for (const size of [[1, 1], [2, 2], [2, 3], [3, 2]]) {
+    scaffolds[`${size[0]}x${size[1]}`] = drawScaffold(size[0], size[1]);
+  }
+
+  // --- villagers + whatever they are hauling
+  const folk = buildFolkAtlas();
+  const cargo = buildCargoAtlas();
+
+  return { grass, dirt, sand, water, decals, objects, buildings, scaffolds, folk, cargo };
 }

@@ -45,4 +45,35 @@ export const P = {
     stem: "#3e8a35",
   },
   mushroom: { cap: "#d8352f", dot: "#fff3e0", stem: "#efe6cf" },
+
+  // --- Buildings ---------------------------------------------------------
+  // Timber framing (same wood as the trees, so buildings sit in the same world).
+  timber: { o: "#2b1a0c", k: "#4a2c1a", t: "#6e4524", T: "#94622f", u: "#b8823f" },
+
+  // Thatch roof (cottages, walled sheds).
+  thatch: { q: "#8a5c1c", r: "#c8912f", s: "#e6bc63", S: "#f5d991" },
+
+  // Clay tile roof (granary, tavern, chapel).
+  tile: { c: "#5c231a", d: "#8f3a29", e: "#b5522f", f: "#d67a45" },
+
+  // Slate roof (chapel tower).
+  slate: { c: "#2f3540", d: "#49515f", e: "#657084", f: "#8a95a8" },
+
+  // Wattle & daub plaster walls.
+  plaster: { k: "#a08a5c", m: "#dcc796", l: "#f0e3bc" },
+
+  // Warm interior glow seen through windows.
+  glow: { w: "#f2c46a", W: "#ffe9a8" },
+
+  // Crops (wheat rows on the farm field).
+  crop: { i: "#6f8c33", j: "#93ad3f", J: "#c6d46a", soil: "#8a6a3c", soilDark: "#6d4f31" },
+
+  // Cloth awnings / banners.
+  cloth: { g: "#a83a2c", G: "#cf5c46", y: "#e8b23f" },
+
+  // Skin + hair for villagers.
+  folk: {
+    skin: "#e8b98a", skinShade: "#c9905f", hair: "#6e4524", hairDark: "#4a2c1a",
+    eye: "#2b1a0c", boot: "#3b2614", belt: "#3b2614",
+  },
 };
